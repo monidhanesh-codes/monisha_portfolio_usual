@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+:root {
+  /* Visual Design System Palette */
+  --color-deep-navy: #142B52;
+  --color-cosmic-blue: #244A78;
+  --color-atmospheric-purple: #716B9B;
+  --color-soft-lavender: #AAA2C8;
+  --color-bioluminescent-cyan: #72E6E8;
+  --color-aqua-teal: #48C9D0;
+  --color-soft-neon-pink: #D99BCF;
+  --color-frost-white: #F2F6FA;
+  --color-cool-blue-grey: #B7C7D9;
+  --color-dark-ui: #172B45;
+
+  --background: #0b1528;
+  --foreground: #F2F6FA;
+}
+
+/* Stacked Project Card Sticky Positioning */
+.stacked-project-card {
+  position: sticky;
+  top: calc(76px + (var(--card-index, 0) * 12px));
+}
+
+@media (min-width: 640px) {
+  .stacked-project-card {
+    top: calc(96px + (var(--card-index, 0) * 16px));
+  }
+}
+
+/* Local Urbanist Font Face Declarations */
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/fonts/urbanist/static/Urbanist-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/fonts/urbanist/static/Urbanist-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/fonts/urbanist/static/Urbanist-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/fonts/urbanist/static/Urbanist-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/fonts/urbanist/static/Urbanist-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-deep-navy: var(--color-deep-navy);
+  --color-cosmic-blue: var(--color-cosmic-blue);
+  --color-atmospheric-purple: var(--color-atmospheric-purple);
+  --color-soft-lavender: var(--color-soft-lavender);
+  --color-bioluminescent-cyan: var(--color-bioluminescent-cyan);
+  --color-aqua-teal: var(--color-aqua-teal);
+  --color-soft-neon-pink: var(--color-soft-neon-pink);
+  --color-frost-white: var(--color-frost-white);
+  --color-cool-blue-grey: var(--color-cool-blue-grey);
+  --color-dark-ui: var(--color-dark-ui);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-urbanist-sans), "Urbanist", system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/* Base resets & typography */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0b1528;
+  color: var(--color-frost-white);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom selection */
+::selection {
+  background: rgba(114, 230, 232, 0.25);
+  color: #72E6E8;
+}
+
+/* Glass UI surfaces */
+.glass-panel {
+  background: rgba(20, 43, 82, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(242, 246, 250, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(11, 21, 40, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-subtle {
+  background: rgba(20, 43, 82, 0.22);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(242, 246, 250, 0.08);
+}
+
+.glass-panel-interactive {
+  background: rgba(20, 43, 82, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(242, 246, 250, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(11, 21, 40, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-interactive:hover {
+  background: rgba(24, 52, 98, 0.45);
+  border-color: rgba(114, 230, 232, 0.35);
+  box-shadow: 0 24px 48px -12px rgba(114, 230, 232, 0.15), 0 0 20px 0 rgba(114, 230, 232, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Subtle glow utilities */
+.glow-cyan-subtle {
+  text-shadow: 0 0 18px rgba(114, 230, 232, 0.45);
+}
+
+.box-glow-cyan {
+  box-shadow: 0 0 25px rgba(114, 230, 232, 0.25);
+}
+
+.border-glow-cyan {
+  border-color: rgba(114, 230, 232, 0.5);
+  box-shadow: 0 0 15px rgba(114, 230, 232, 0.2);
+}
+
+/* Custom minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(11, 21, 40, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(170, 162, 200, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(114, 230, 232, 0.4);
+}
+
+/* Popup-specific custom scrollbar — futuristic, minimal */
+.popup-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(72, 201, 208, 0.35) transparent;
+}
+
+.popup-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.popup-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.popup-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(72, 201, 208, 0.35);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+.popup-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(114, 230, 232, 0.6);
+}
+
+
+/* Atmospheric animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll-wheel {
+  animation: scrollWheel 1.8s ease-in-out infinite;
+}
+
+@keyframes arrowBob {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 6px rgba(114, 230, 232, 0.4));
+  }
+  50% {
+    transform: translateY(6px);
+    filter: drop-shadow(0 0 12px rgba(114, 230, 232, 0.75));
+  }
+}
+
+.animate-arrow-bob {
+  animation: arrowBob 2s ease-in-out infinite;
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Hand swipe gesture — mobile scroll affordance */
+@keyframes swipeUp {
+  0%   { transform: translateY(0px);   opacity: 0.85; }
+  20%  { transform: translateY(0px);   opacity: 0.85; }
+  55%  { transform: translateY(-14px); opacity: 1;    }
+  70%  { transform: translateY(-14px); opacity: 1;    }
+  100% { transform: translateY(0px);   opacity: 0.85; }
+}
+
+.animate-hand-swipe {
+  animation: swipeUp 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-fade-slide-up,
+  .animate-shake,
+  .animate-hand-swipe {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
